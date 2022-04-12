@@ -1,0 +1,29 @@
+{% extends 'inc/mabase.html.twig' %}
+
+{% block titredelapage %}Mon super titre{% endblock %}
+
+{% block styles %}
+{{ parent() }}
+<style>
+body { background: #DEADFF; }
+</style>
+{% endblock %}
+
+{% block contenudelapage %}
+<ul>
+    {% for link, label in links %}
+    <li>
+        <a href="{{ path(link) }}">
+            {{ label }}
+        </a>
+    </li>
+    {% endfor %}
+</ul>
+
+{% include 'inclus.html.twig' %}
+{% include 'inclus.html' %}
+
+<style>
+    {% include 'inclus.css' %}
+</style>
+{% endblock %}
