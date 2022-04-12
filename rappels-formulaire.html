@@ -1,0 +1,110 @@
+<!doctype html>
+<html lang="fr">
+    <head>
+        <meta charset="UTF-8">
+        <title>Test de formulaire</title>
+    </head>
+    <body>
+        <!-- Les formulaires -->
+        <!--
+            Un formulaire est composé :
+            - D'une balise <form></form>
+            - D'une ou plusieurs balises <input />
+            - Potentiellement de balises <textarea></textarea>
+            - Potentiellement de balises <select></select> et <option />
+            - Autres : <label>, <fieldset>, ...
+        -->
+
+        <!--
+            La balise form : Envoie toutes les données (input) en son sein
+            - Attribut method : Définit si on envoie les données en GET ou en POST
+                - En GET, les données sont envoyées et visibles dans l'URL
+                - En POST, les données ne sont pas visibles dans l'URL
+                - Par défaut, c'est GET
+            - Attribut action : Définit à quelle adresse sont envoyées les données
+                - Par défaut, c'est envoyé à la page courante
+            - enctype : nécessaire surtout si on envoie des fichiers
+                - Sinon, pas besoin de le préciser
+        -->
+        <form method="GET" action="lapageweb.php">
+            <!-- 
+                Les balises input : Représente une donnée entrante (input)
+                - Attribut type : Définit le type de donnée (numéro de téléphone, nombre...)
+                - Attribut name : Définit le "nom de variable" associé à la donnée
+                    - La donnée envoyée au serveur sera nommée avec l'attribut name
+                    - Exemple : Si <input name="prenom" />, la donnée envoyée sera de la forme :
+                        - prenom=...
+                - Attribut id : Utile si lié à une balise <label></label>
+                    - Exemple : <label id="prenom">Prénom</label><input id="prenom" />
+                - Attribut value : Définit sa valeur (par défaut ?)
+                - Attribut placeholder : Définir un texte grisé indiquant ce qu'on attend comme valeur
+
+                - Attributs liés aux types d'input en particulier :
+                    - input text : maxlength : Taille maximum en lettres de l'input
+                    - input number : min : Valeur minimum du nombre
+                    - input number : max : Valeur maximum du nombre
+                    - input number : step : Ecart entre chaque valeur possible
+
+            Exemples avec des libellés :
+            -->
+            <label for="prenom1">Prénom</label>
+            <input type="text" id="prenom1" name="prenom1" value="Toto" />
+
+            <label>
+                Prénom
+                <input type="text" name="prenom" />
+            </label>
+
+            <!-- 
+                La balise textarea : une grande zone de texte 
+                N'oubliez pas l'attribut name !
+                Il n'y a pas d'attribut value !
+
+                - Attribut cols : Nombre de caractères de large
+                - Attribut rows : Nombre de caractères de haut
+            -->
+            <textarea>Valeur par défaut</textarea>
+
+            <!-- 
+                La balise select : Un menu déroulant
+                N'oubliez pas l'attribut name !
+                - Les choix possibles sont contenus dans des balises <option></option>
+
+                Si vous voulez spécifier une valeur pour une option, utilisez l'attribut value
+                    - Par défaut, c'est le contenu de la balise qui sera envoyé
+            -->
+            <select name="fruit_prefere">
+                <option value="1">Pomme</option>
+                <option value="2">Poire</option>
+                <option value="3">Banane</option>
+                <option value="4">Fraise</option>
+            </select>
+
+            <!-- 
+                Balise input spéciale : le type "submit"
+                Permet d'envoyer le formulaire
+                - L'attribut value contient le texte du bouton
+
+                Il est également possible de faire une balise <button type="submit"></button>
+                - Le fonctionnement est le même, mais vous pouvez mettre des balises dedans.
+            -->
+            <input type="submit" value="Envoyer" />
+
+            <button type="submit">
+                En<strong>vo</strong>y<em>er</em>
+            </button>
+
+            <!--
+                Balise input spéciale : le type "reset"
+                Permet d'effacer toutes les données saisies dans le formulaire
+            -->
+
+            <input type="reset" value="Remettre à zéro" />
+        </form>
+
+        <!-- 
+            Si vous mettez une balise <input /> en dehors du formulaire, elle ne
+            sera pas envoyée par le formulaire 
+        -->
+    </body>
+</html>
