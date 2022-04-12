@@ -20,7 +20,7 @@ body { background: #DEADFF; }
     {% endfor %}
 </ul>
 
-{% include 'inclus.html.twig' %}
+{% include 'inclus.html.twig' with { 'toto': 'tata' } %}
 {% include 'inclus.html' %}
 
 <style>

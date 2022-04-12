@@ -1,0 +1,19 @@
+{% extends 'inc/mabase.html.twig' %}
+
+{% block contenudelapage %}
+<form method="POST">
+    <label for="firstname">Prénom</label>
+    <input id="firstname" name="firstname" type="text" />
+
+    <input type="submit" value="Envoyer" />
+</form>
+
+{% if firstname != null %}
+{# 
+Il est possible d'écrire simplement :
+    {% if firstname %}
+#}
+<p>Vous avez saisi : {{ firstname }}</p>
+{% endif %}
+
+{% endblock %}
