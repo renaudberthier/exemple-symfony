@@ -65,4 +65,51 @@ class DataController extends AbstractController
             "error" => $error
         ]);
     }
+
+    #[Route('/test-donnees-complexes', name: 'test_complex')]
+    public function complex(): Response
+    {
+        $products = [
+            [
+                "name" => "Une pomme",
+                "price" => 12.25,
+                "tags" => ["Fruit", "En promotion"],
+                "reseller" => [
+                    "siren" => "123456789",
+                    "address" => [
+                        "line1" => "1 rue Test",
+                        "line2" => "75020 PARIS",
+                    ]
+                ]
+            ],
+            [
+                "name" => "Une poire",
+                "price" => 10.25,
+                "tags" => ["Fruit", "En promotion"],
+                "reseller" => [
+                    "siren" => "987654321",
+                    "address" => [
+                        "line1" => "12 rue Test",
+                        "line2" => "75011 PARIS",
+                    ]
+                ]
+            ],
+            [
+                "name" => "Une fraise",
+                "price" => 5.25,
+                "tags" => ["Fruit", "En promotion"],
+                "reseller" => [
+                    "siren" => "123456789",
+                    "address" => [
+                        "line1" => "71 rue Test",
+                        "line2" => "75015 PARIS",
+                    ]
+                ]
+            ]
+        ];
+        
+        return $this->render('data/complex.html.twig', [
+            "products" => $products
+        ]);
+    }
 }

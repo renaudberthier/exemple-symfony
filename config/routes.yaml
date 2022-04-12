@@ -5,3 +5,17 @@ controllers:
 kernel:
     resource: ../src/Kernel.php
     type: annotation
+
+# Template directement à partir d'une route
+# https://symfony.com/doc/current/templates.html#rendering-a-template-directly-from-a-route
+le_nom_que_je_veux:
+    path: /page-statique
+    controller: Symfony\Bundle\FrameworkBundle\Controller\TemplateController
+    defaults:
+        template: static.html.twig
+
+# Routes avec Symfony :
+# https://symfony.com/doc/current/routing.html#creating-routes-in-yaml-xml-or-php-files
+#exercise_form:
+#    path: /correction-formulaire
+#    controller: App\Controller\DataController::exercise

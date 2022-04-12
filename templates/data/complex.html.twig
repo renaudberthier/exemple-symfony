@@ -1,0 +1,15 @@
+{% extends 'inc/mabase.html.twig' %}
+
+{% block contenudelapage %}
+
+{% for product in products %}
+<article>
+    <h1>{{ product.name }}</h1>
+    <em>{{ product.price }}</em>
+
+    <h2>Adresse du revendeur</h2>
+    <p>{{ product.reseller.address.line1 }}</p>
+    <p>{{ product.reseller.address.line2 }}</p>
+</article>
+{% endfor %}
+{% endblock %}
