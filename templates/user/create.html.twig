@@ -1,0 +1,18 @@
+{% extends 'inc/mabase.html.twig' %}
+
+{% block titredelapage %}Créer un utilisateur{% endblock %}
+
+{% block contenudelapage %}
+<form method="POST">
+    <label for="firstname">Prénom</label>
+    <input type="text" maxlength="255" required id="firstname" name="firstname" />
+    
+    <label for="lastname">Nom</label>
+    <input type="text" maxlength="255" required id="lastname" name="lastname" />
+
+    <label for="age">Âge</label>
+    <input type="number" min="1" max="128" step="1" required id="age" name="age" />
+
+    <input type="submit" value="Créer un utilisateur" />
+</form>
+{% endblock %}

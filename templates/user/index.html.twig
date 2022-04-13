@@ -1,0 +1,25 @@
+{% extends 'inc/mabase.html.twig' %}
+
+{% block titredelapage %}Liste des utilisateurs{% endblock %}
+
+{% block contenudelapage %}
+<h1>Liste des utilisateurs</h1>
+<table>
+    <thead>
+        <tr>
+            <th>Prénom</th>
+            <th>Nom</th>
+            <th>Age</th>
+        </tr>
+    </thead>
+    <tbody>
+    {% for user in users %}
+        <tr>
+            <td>{{ user.firstname }}</td>
+            <td>{{ user.lastname }}</td>
+            <td>{{ user.age }}</td>
+        </tr>
+    {% endfor %}
+    </tbody>
+</table>
+{% endblock %}
