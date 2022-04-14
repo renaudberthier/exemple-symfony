@@ -10,6 +10,7 @@
             <th>Prénom</th>
             <th>Nom</th>
             <th>Age</th>
+            <th>Actions</th>
         </tr>
     </thead>
     <tbody>
@@ -18,6 +19,8 @@
             <td>{{ user.firstname }}</td>
             <td>{{ user.lastname }}</td>
             <td>{{ user.age }}</td>
+            <td><a href="{{ path('user_show', {id: user.id}) }}">Voir</a></td>
+            <td><a href="{{ path('user_delete', {id: user.id}) }}">Supprimer</a></td>
         </tr>
     {% endfor %}
     </tbody>

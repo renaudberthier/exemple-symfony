@@ -9,6 +9,7 @@ use Doctrine\ORM\Exception\ORMException;
 use Symfony\Bundle\FrameworkBundle\Controller\AbstractController;
 use Symfony\Component\HttpFoundation\Request;
 use Symfony\Component\HttpFoundation\Response;
+use Symfony\Component\HttpKernel\Exception\NotFoundHttpException;
 use Symfony\Component\Routing\Annotation\Route;
 
 class UserController extends AbstractController
@@ -21,6 +22,37 @@ class UserController extends AbstractController
         return $this->render('user/index.html.twig', [
             'users' => $users
         ]);
+    }
+
+    // Voir un utilisateur en particulier
+    #[Route('/voir-utilisateur/{id}', name: 'user_show')]
+    public function show_user(string $id, UserRepository $userRepository): Response
+    {
+        $id = intval($id); // Transformer $id en valeur numérique
+        $user = $userRepository->find($id); // Cherche l'user avec l'id $id
+
+        if(!$user) { // Si on ne l'a pas trouvé
+            throw new NotFoundHttpException(); // Erreur 404
+        }
+        
+        return $this->render('user/show.html.twig', [
+            'user' => $user
+        ]);
+    }
+
+    // Supprimer un utilisateur en particulier
+    #[Route('/supprimer-utilisateur/{id}', name: 'user_delete')]
+    public function delete_user(string $id, UserRepository $userRepository): Response
+    {
+        $id = intval($id); // Transformer $id en valeur numérique
+        $user = $userRepository->find($id); // Cherche l'user avec l'id $id
+
+        if(!$user) { // Si on ne l'a pas trouvé
+            throw new NotFoundHttpException(); // Erreur 404
+        }
+        
+        $userRepository->remove($user); // On supprime l'user
+        return $this->redirectToRoute('user_index'); // On redirige à l'accueil
     }
 
     // Créer un nouvel utilisateur

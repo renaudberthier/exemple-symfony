@@ -1,0 +1,8 @@
+{% extends 'inc/mabase.html.twig' %}
+
+{% block titredelapage %}Voir l'utilisateur {{ user.id }}{% endblock %}
+
+{% block contenudelapage %}
+<h1>{{ user.firstname }} {{ user.lastname }}</h1>
+<em>{{ user.age }} ans</em>
+{% endblock %}
